@@ -1,11 +1,17 @@
-import z from "zod";
-export const TechsRequestSchema = z.object({
-    name: z.string(),
-    description: z.string(),
-    imgUrl: z.string()
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UpdateTechsRequestSchema = exports.TechsRequestSchema = void 0;
+const zod_1 = __importDefault(require("zod"));
+exports.TechsRequestSchema = zod_1.default.object({
+    name: zod_1.default.string(),
+    description: zod_1.default.string(),
+    imgUrl: zod_1.default.string()
 });
-export const UpdateTechsRequestSchema = z.object({
-    name: z.string().optional(),
-    description: z.string().optional(),
-    imgUrl: z.string().optional()
+exports.UpdateTechsRequestSchema = zod_1.default.object({
+    name: zod_1.default.string().optional(),
+    description: zod_1.default.string().optional(),
+    imgUrl: zod_1.default.string().optional()
 });

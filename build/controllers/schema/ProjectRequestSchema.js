@@ -1,13 +1,19 @@
-import z from "zod";
-export const ProjetRequestSchema = z.object({
-    name: z.string(),
-    description: z.string(),
-    imgUrl: z.string(),
-    vercelUrl: z.string()
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UpdateProjectRequestSchema = exports.ProjetRequestSchema = void 0;
+const zod_1 = __importDefault(require("zod"));
+exports.ProjetRequestSchema = zod_1.default.object({
+    name: zod_1.default.string(),
+    description: zod_1.default.string(),
+    imgUrl: zod_1.default.string(),
+    vercelUrl: zod_1.default.string()
 });
-export const UpdateProjectRequestSchema = z.object({
-    name: z.string().optional(),
-    description: z.string().optional(),
-    imgUrl: z.string().optional(),
-    vercelUrl: z.string().optional()
+exports.UpdateProjectRequestSchema = zod_1.default.object({
+    name: zod_1.default.string().optional(),
+    description: zod_1.default.string().optional(),
+    imgUrl: zod_1.default.string().optional(),
+    vercelUrl: zod_1.default.string().optional()
 });

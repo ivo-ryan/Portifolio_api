@@ -1,21 +1,25 @@
-import { prisma } from "../../database";
-export class TechsPrisma {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TechsPrisma = void 0;
+const database_1 = require("../../database");
+class TechsPrisma {
     findAll() {
-        return prisma.techs.findMany();
+        return database_1.prisma.techs.findMany();
     }
     create(attributes) {
-        return prisma.techs.create({ data: attributes });
+        return database_1.prisma.techs.create({ data: attributes });
     }
     update(id, attributes) {
-        return prisma.techs.update({
+        return database_1.prisma.techs.update({
             where: { id },
             data: attributes
         });
     }
     delete(id) {
-        return prisma.techs.delete({ where: { id } });
+        return database_1.prisma.techs.delete({ where: { id } });
     }
     findById(id) {
-        return prisma.techs.findUnique({ where: { id } });
+        return database_1.prisma.techs.findUnique({ where: { id } });
     }
 }
+exports.TechsPrisma = TechsPrisma;
