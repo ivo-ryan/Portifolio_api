@@ -7,7 +7,7 @@ export const router = Router();
 router.get("/projects", projectController.index);
 router.post("/projects", projectController.create);
 router.put("/projects/:id", projectController.update);
-router.delete("projects/:id", projectController.delete);
+router.delete("/projects/:id", projectController.delete);
 
 router.get("/techs", techsController.index);
 router.post("/techs", techsController.create);
