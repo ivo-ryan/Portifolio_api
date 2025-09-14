@@ -7,7 +7,7 @@ exports.router = (0, express_1.Router)();
 exports.router.get("/projects", container_1.projectController.index);
 exports.router.post("/projects", container_1.projectController.create);
 exports.router.put("/projects/:id", container_1.projectController.update);
-exports.router.delete("projects/:id", container_1.projectController.delete);
+exports.router.delete("/projects/:id", container_1.projectController.delete);
 exports.router.get("/techs", container_1.techsController.index);
 exports.router.post("/techs", container_1.techsController.create);
 exports.router.put("/techs/:id", container_1.techsController.update);
