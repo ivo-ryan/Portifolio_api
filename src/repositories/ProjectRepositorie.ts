@@ -4,7 +4,9 @@ export interface ProjectAttributes {
     name: string;
     description: string;
     imgUrl: string;
-    vercelUrl: string
+    vercelUrl: string;
+    gitUrl: string;
+    technologies: string;
 }
 
 export interface IProjectRepositorie {

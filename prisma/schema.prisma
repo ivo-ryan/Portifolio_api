@@ -7,19 +7,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Techs {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  imgUrl      String @db.VarChar(255)
+  description String
+}
+
+
 model Project {
   id          Int    @id @default(autoincrement())
   name        String @db.VarChar(255)
   imgUrl      String @db.VarChar(255)
   vercelUrl   String @db.VarChar(255)
   description String @db.Text
-  gitUrl String @db.VarChar(255)
+  gitUrl      String @db.VarChar(255)
   technologies String @db.Text
 }
 
-model Techs {
-  id          Int    @id @default(autoincrement())
-  name        String @db.VarChar(255)
-  imgUrl      String @db.VarChar(255)
-  description String @db.Text
+model ChatMessage {
+  id        Int      @id @default(autoincrement())
+  role      Roles 
+  createdAt DateTime @default(now())
 }
+
+
+enum Roles {
+  user
+  assistant
+}
+
