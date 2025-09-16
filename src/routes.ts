@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { projectController, techsController } from "./container";
+import { openaiController, projectController, techsController } from "./container";
 
 
 export const router = Router();
@@ -13,3 +13,5 @@ router.get("/techs", techsController.index);
 router.post("/techs", techsController.create);
 router.put("/techs/:id", techsController.update);
 router.delete("/techs/:id", techsController.delete);
+
+router.post("/ia", openaiController.chat);

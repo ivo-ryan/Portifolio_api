@@ -1,7 +1,9 @@
+import { OpenaiController } from "./controllers/OpenaiController";
 import { ProjectController } from "./controllers/ProjectController";
 import { TechsController } from "./controllers/TechsController";
 import { ProjectPrisma } from "./repositories/prisma/ProjectPrisma";
 import { TechsPrisma } from "./repositories/prisma/TechsPrisma";
+import { OpenaiService } from "./services/OpenaiService";
 import { ProjectService } from "./services/ProjectService";
 import { TechsService } from "./services/TechsService";
 
@@ -11,6 +13,8 @@ const techsPrismaRepositorie = new TechsPrisma();
 
 const projectService = new ProjectService(projectPrismaRepositorie);
 const techsService = new TechsService(techsPrismaRepositorie);
+const openaiService = new OpenaiService();
 
 export const projectController = new ProjectController(projectService);
 export const techsController = new TechsController(techsService);
+export const openaiController = new OpenaiController(openaiService);
