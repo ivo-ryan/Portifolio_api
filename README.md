@@ -91,9 +91,6 @@ Esta API é consumida diretamente pelo frontend do portfólio, permitindo:
 **Ivo Ryan**
 Desenvolvedor Full Stack JavaScript
 
-* GitHub: [https://github.com/ivo-ryan](https://github.com/ivo-ryan)
-* LinkedIn: [https://linkedin.com/in/ivo-bastos](https://linkedin.com/in/ivo-bastos)
-
 ---
 
 ## 📌 Observações
