@@ -16,7 +16,7 @@ export class TechsService {
 
     async techExists(id: number){
         const tech = await this.techsRepositorie.findById(id);
-        if(!tech) new HttpError(404, "Tech não encontrada!");
+        if(!tech) throw new HttpError(404, "Tech não encontrada!");
     }
 
     async update( id:number, attributes: Partial<CreateTechsAttributes> ){
@@ -28,6 +28,6 @@ export class TechsService {
 
     async delete(id: number) {
         await this.techExists(id);
-        const deletedTech = await this.techsRepositorie.delete(id);
+        await this.techsRepositorie.delete(id);
     }
 }

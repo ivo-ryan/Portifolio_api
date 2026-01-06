@@ -16,7 +16,7 @@ export class ProjectService {
 
     async projectIdExists(id: number) {
         const projectId = await this.projectRepositorie.findById(id);
-        if(!projectId) new HttpError(404, "O Projeto não foi encontrado!");
+        if(!projectId) throw new HttpError(404, "O Projeto não foi encontrado!");
     }
 
     async updateProject(attributes: Partial<ProjectAttributes> , id:number){
