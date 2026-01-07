@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { IProjectRepositorie, ProjectAttributes } from '../repositories/ProjectRepositorie';
+import { IProjectRepository, ProjectAttributes } from '../repositories/ProjectRepository';
 import { ProjectService } from './ProjectService';
 
-const projectRepositorieMock:IProjectRepositorie = {
+const projectRepositorieMock:IProjectRepository = {
     findAll: vi.fn(),
     findById: vi.fn(),
     create: vi.fn(),
@@ -71,5 +71,66 @@ describe('Project Service', () => {
         });
     });
 
+    it("Deve verificar se projeto existe ao buscar por ID", async () => {
+            (projectRepositorieMock.findById as any).mockResolvedValueOnce(projectFake[0]);
+            
+            await expect(service.projectIdExists(1)).resolves.not.toThrow();
+            expect(projectRepositorieMock.findById).toHaveBeenCalledTimes(1);
+            expect(projectRepositorieMock.findById).toHaveBeenCalledWith(1);
+        });
+
+    it("Deve lançar erro se projeto não existir ao buscar por ID", async () => {
+            (projectRepositorieMock.findById as any).mockResolvedValueOnce(null);
+            await expect(service.projectIdExists(99)).rejects.toThrow("O Projeto não foi encontrado!")
+            expect(projectRepositorieMock.findById).toHaveBeenCalledTimes(1);
+            expect(projectRepositorieMock.findById).toHaveBeenCalledWith(99);
+    });
+
+    it("Deve atualizar um projeto existente", async () => {
+            (projectRepositorieMock.findById as any).mockResolvedValueOnce(projectFake[0]);
+            (projectRepositorieMock.update as any).mockResolvedValueOnce({
+                ...projectFake[0],
+                name: "Projeto Atualizado"
+            });
+            
+            const result = await service.updateProject({name: "Projeto Atualizado"}, 1);
+
+            expect(result).toEqual({
+                ...projectFake[0],
+                name: "Projeto Atualizado"
+            });
+            expect(projectRepositorieMock.update).toHaveBeenCalledTimes(1);
+            expect(projectRepositorieMock.update).toHaveBeenCalledWith(1, {name: "Projeto Atualizado"});
+            expect(projectRepositorieMock.findById).toHaveBeenCalledTimes(1);
+            expect(projectRepositorieMock.findById).toHaveBeenCalledWith(1);
+        });
+
+    it("Deve lançar erro ao tentar atualizar um projeto inexistente", async () => {
+        (projectRepositorieMock.findById as any).mockResolvedValueOnce(null);
+
+        await expect(service.updateProject({name: "Projeto Atualizado"}, 99)).rejects.toThrow("O Projeto não foi encontrado!");
+        expect(projectRepositorieMock.findById).toHaveBeenCalledTimes(1);
+        expect(projectRepositorieMock.findById).toHaveBeenCalledWith(99);
+        expect(projectRepositorieMock.update).not.toHaveBeenCalled();
+    });
+
+    it("Deve deletar um projeto existente", async () => {
+        (projectRepositorieMock.findById as any).mockResolvedValueOnce(projectFake[0]);
+        (projectRepositorieMock.delete as any).mockResolvedValueOnce(true);
+        const result = await service.projectDelete(1);
+        expect(result).toBe(true);
+        expect(projectRepositorieMock.findById).toHaveBeenCalledTimes(1);
+        expect(projectRepositorieMock.findById).toHaveBeenCalledWith(1);
+        expect(projectRepositorieMock.delete).toHaveBeenCalledTimes(1);
+        expect(projectRepositorieMock.delete).toHaveBeenCalledWith(1);
+    });
+
+    it("Deve lançar erro ao tentar deletar um projeto inexistente", async () => {
+        (projectRepositorieMock.findById as any).mockResolvedValueOnce(null);
+        await expect(service.projectDelete(99)).rejects.toThrow("O Projeto não foi encontrado!");
+        expect(projectRepositorieMock.findById).toHaveBeenCalledTimes(1);
+        expect(projectRepositorieMock.findById).toHaveBeenCalledWith(99);
+        expect(projectRepositorieMock.delete).not.toHaveBeenCalled();
+    });
     
 });

@@ -1,8 +1,8 @@
 import { Project } from "@prisma/client";
-import { IProjectRepositorie, ProjectAttributes } from "../ProjectRepositorie";
+import { IProjectRepository, ProjectAttributes } from "../ProjectRepository";
 import { prisma } from "../../database";
 
-export class ProjectPrisma implements IProjectRepositorie {
+export class ProjectPrisma implements IProjectRepository {
     findAll () : Promise<Project[]>{
         return prisma.project.findMany();
     }

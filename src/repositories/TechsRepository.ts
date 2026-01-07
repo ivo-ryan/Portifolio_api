@@ -7,7 +7,7 @@ export interface CreateTechsAttributes {
 }
 
 
-export interface ITechsRepositorie{
+export interface ITechsRepository{
     findAll: () => Promise<Techs[]>;
     create: (attributes: CreateTechsAttributes) => Promise<Techs>;
     update: (id: number, attributes: Partial<CreateTechsAttributes>) => Promise<Techs | null>

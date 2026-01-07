@@ -1,8 +1,8 @@
 import { HttpError } from "../errors/HttpError";
-import { CreateTechsAttributes, ITechsRepositorie } from "../repositories/TechsRepositorie";
+import { CreateTechsAttributes, ITechsRepository } from "../repositories/TechsRepository";
 
 export class TechsService {
-    constructor( readonly techsRepositorie: ITechsRepositorie ){}
+    constructor( readonly techsRepositorie: ITechsRepository ){}
 
     async findAllTechs (){
         const findAll = await this.techsRepositorie.findAll();
@@ -28,6 +28,7 @@ export class TechsService {
 
     async delete(id: number) {
         await this.techExists(id);
-        await this.techsRepositorie.delete(id);
+        const deletedTech = await this.techsRepositorie.delete(id);
+        return deletedTech;
     }
 }

@@ -1,8 +1,8 @@
 import { HttpError } from "../errors/HttpError";
-import { IProjectRepositorie, ProjectAttributes } from "../repositories/ProjectRepositorie";
+import { IProjectRepository, ProjectAttributes } from "../repositories/ProjectRepository";
 
 export class ProjectService {
-    constructor( readonly projectRepositorie: IProjectRepositorie){}
+    constructor( readonly projectRepositorie: IProjectRepository){}
 
     async projectsAll (){
         const projects = await this.projectRepositorie.findAll();

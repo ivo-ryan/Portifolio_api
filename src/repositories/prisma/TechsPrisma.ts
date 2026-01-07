@@ -1,8 +1,8 @@
 import { Techs } from "@prisma/client";
-import { CreateTechsAttributes, ITechsRepositorie } from "../TechsRepositorie";
+import { CreateTechsAttributes, ITechsRepository } from "../TechsRepository";
 import { prisma } from "../../database";
 
-export class TechsPrisma implements ITechsRepositorie {
+export class TechsPrisma implements ITechsRepository {
     findAll () : Promise<Techs[]>{
         return prisma.techs.findMany();
     }

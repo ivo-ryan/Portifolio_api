@@ -9,7 +9,7 @@ export interface ProjectAttributes {
     technologies: string;
 }
 
-export interface IProjectRepositorie {
+export interface IProjectRepository {
     findAll: () => Promise<Project[]>
     create: (attributes: ProjectAttributes) => Promise<Project>
     update: (id: number, attributes: Partial<ProjectAttributes>) => Promise<Project | null>
