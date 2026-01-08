@@ -1,6 +1,6 @@
 import { Handler } from "express";
 import { ProjectService } from "../services/ProjectService";
-import { ProjetRequestSchema, UpdateProjectRequestSchema } from "./schema/ProjectRequestSchema";
+import { ProjectRequestSchema, UpdateProjectRequestSchema } from "./schema/ProjectRequestSchema";
 
 export class ProjectController {
 
@@ -18,7 +18,7 @@ export class ProjectController {
 
     create: Handler = async (req , res , next ) => {
         try {
-            const body = ProjetRequestSchema.parse(req.body);
+            const body = ProjectRequestSchema.parse(req.body);
             const newProject = await this.projectService.createProject(body);
             res.status(201).json(newProject);
             

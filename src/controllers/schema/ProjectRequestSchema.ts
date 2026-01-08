@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const ProjetRequestSchema = z.object({
+export const ProjectRequestSchema = z.object({
     name: z.string(),
     description: z.string(),
     imgUrl: z.string(),
