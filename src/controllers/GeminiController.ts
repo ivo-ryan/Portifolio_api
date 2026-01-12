@@ -1,13 +1,13 @@
 import { Handler} from "express";
-import { OpenAiService } from "../services/openaiService";
-import { OpenaiRequestSchema } from "./schema/OpenaiRequestSchema";
+import { GeminiService } from "../services/geminiService";
+import { GeminiRequestSchema } from "./schema/GeminiRequestSchema";
 
 export class AiController {
-    constructor( readonly openaiService: OpenAiService ) {}
+    constructor( readonly openaiService: GeminiService ) {}
 
   chat: Handler = async (req, res, next) => {
    try {
-        const { prompt } = OpenaiRequestSchema.parse(req.body);
+        const { prompt } = GeminiRequestSchema.parse(req.body);
         const answer = await this.openaiService.chat(prompt);
         return res.json({ answer });
    } catch (error) {
