@@ -23,6 +23,7 @@ model Project {
   description String @db.Text
   gitUrl      String @db.VarChar(255)
   technologies String @db.Text
+  features    String  @default("")
 }
 
 model ChatMessage {

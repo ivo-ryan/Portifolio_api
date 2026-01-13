@@ -7,6 +7,7 @@ export interface ProjectAttributes {
     vercelUrl: string;
     gitUrl: string;
     technologies: string;
+    features: string;
 }
 
 export interface IProjectRepository {

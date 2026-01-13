@@ -6,7 +6,8 @@ export const ProjectRequestSchema = z.object({
     imgUrl: z.string(),
     vercelUrl: z.string(),
     gitUrl: z.string(),
-    technologies: z.string()
+    technologies: z.string(),
+    features: z.string()
 });
 
 export const UpdateProjectRequestSchema = z.object({
@@ -15,5 +16,6 @@ export const UpdateProjectRequestSchema = z.object({
     imgUrl: z.string().optional(),
     vercelUrl: z.string().optional(),
     gitUrl: z.string().optional(),
-    tecnologies: z.string().optional()
-})
+    tecnologies: z.string().optional(),
+    features: z.string().optional()
+});

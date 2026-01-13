@@ -36,7 +36,8 @@ const createProductFake: ProjectAttributes = {
     gitUrl: "https://github.com/projeto-novo",
     vercelUrl: "https://projeto-novo.com",
     technologies: "js,ts,react",
-    imgUrl: "exemplo.com/img.png"
+    imgUrl: "exemplo.com/img.png",
+    features: "exemplo de feature"
 };
 
 describe('Project Service', () => {
