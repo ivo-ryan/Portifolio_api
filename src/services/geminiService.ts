@@ -11,7 +11,7 @@ export class GeminiService {
 
   async chat(prompt: string) {
 
-    if(!prompt || prompt.length === 0 ) throw new HttpError(400, "Promp inválido!");
+    if(!prompt || prompt.length === 0 ) throw new HttpError(400, "Prompt inválido!");
 
     const response = await client.models.generateContent({
       model: "gemini-2.5-flash",

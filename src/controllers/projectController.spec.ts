@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ProjectService } from "../services/ProjectService";
 import { ProjectController } from "./ProjectController";
+import { features } from "process";
 
 
 const projectServiceMock = {
@@ -16,7 +17,8 @@ const projectFake = {
     imgUrl: "https://example.com/projeto-x.png",
     vercelUrl: "https://example.com/projeto-x",
     gitUrl: "https://example.com/projeto-x.git",
-    technologies: "JavaScript, TypeScript"
+    technologies: "JavaScript, TypeScript",
+    features: "Autenticação, Dashboard"
 } ;
 
 describe("Project Controller", () => {

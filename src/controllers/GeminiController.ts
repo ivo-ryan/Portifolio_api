@@ -9,7 +9,7 @@ export class AiController {
    try {
         const { prompt } = GeminiRequestSchema.parse(req.body);
         const answer = await this.openaiService.chat(prompt);
-        return res.json({ answer });
+        return res.status(200).json({ answer });
    } catch (error) {
          next(error);
    }
