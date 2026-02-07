@@ -15,8 +15,6 @@ vi.mock("../../database", () => ({
     }
 }));
 
-const createMocked = vi.mocked(prisma.project.findMany);
-
 const attributesFake = { 
     name: "Projeto Teste", 
     description: "Descrição do projeto teste" ,
