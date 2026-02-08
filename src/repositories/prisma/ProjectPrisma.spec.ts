@@ -34,7 +34,6 @@ describe("Project Prisma Repository", () => {
 
     it("Deve chamar o método findAll do prisma", async () => {
         await prismaProject.findAll();
-        expect(prisma.project.findMany).toHaveBeenCalled();
         expect(prisma.project.findMany).toHaveBeenCalledTimes(1);
     });
 
