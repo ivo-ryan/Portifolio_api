@@ -14,7 +14,7 @@ export class GeminiService {
     if(!prompt || prompt.length === 0 ) throw new HttpError(400, "Prompt inválido!");
 
     const response = await client.models.generateContent({
-      model: "gemini-1.5-flash",
+      model: "gemini-3-flash-preview",
       contents: prompt
     });
 
